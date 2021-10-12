@@ -1,4 +1,5 @@
 import './App.css';
+import Header from './components/Header/Header';
 import Login from './screens/Login/Login';
 
 
@@ -6,7 +7,7 @@ import Login from './screens/Login/Login';
 function App() {
   return (
     <div className="App">
-      <Login />
+      <Header col="clients" />
     </div>
   );
 }
