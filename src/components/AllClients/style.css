@@ -1,0 +1,132 @@
+.allClients_container {
+    width: 90%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.AllClients_leftSide {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: -2px 2px 5px 2px #C4C4C4;
+}
+
+.allClients_clients {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    border-radius: 30px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+.allClient_input {
+    width: 80%;
+    height: 5vh;
+    border: none;
+    border-radius: 30px;
+    background-color: #C4C4C4;
+    margin-top: 3vh;
+    padding-left: 2vw;
+    margin-bottom: 5vh;
+}
+
+.allClients_client {
+    width: 80%;
+    height: 6vh;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 30px;
+    margin-top: 3vh;
+    padding-left: 2vw;
+    box-shadow: -2px 2px 5px 2px #C4C4C4;
+    font-size: .8rem;
+    transition: all 300ms ease;
+    cursor: pointer;
+}
+
+.allClients_client:hover {
+    background-color: black;
+    color: white;
+    transition: all 300ms ease;
+}
+
+.allClients_rightSide {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    box-shadow: -2px 2px 5px 2px #C4C4C4;
+}
+
+.allClients_rightSide > h1 {
+    font-size: 1.5rem;
+    margin-bottom: 3vh;
+}
+
+.allClients_accounts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    border-radius: 30px;
+    overflow-y: auto;
+}
+
+.allClients_account {
+    width: 90%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 30px;
+    box-shadow: -2px 2px 5px 2px #C4C4C4;
+    cursor: pointer;
+}
+
+.allClients_account > h3 {
+    margin-left: 1vw;
+    font-size: 1rem;
+}
+
+.allClients_icons {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 1vw;
+}
+
+.allClients_icons > img {
+    cursor: pointer;
+}
