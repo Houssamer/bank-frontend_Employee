@@ -1,0 +1,147 @@
+.accountDetail_container {
+  width: 60%;
+  height: 80vh;
+  background-color: #bcbcbc21;
+  border-radius: 30px;
+  box-shadow: -2px 2px 5px 2px #c4c4c4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accountDetail_container > h1 {
+  font-size: 4rem;
+  align-self: flex-start;
+  margin-left: 5vw;
+  margin-bottom: 5vh;
+}
+
+.accountDetail_body {
+  width: 90%;
+  height: 70%;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.accountDetail_leftSide {
+  width: 40%;
+  height: 55%;
+  border-radius: 30px;
+  background-color: white;
+  box-shadow: -2px 2px 5px 2px #c4c4c4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accountDetail_number {
+  width: 80%;
+  height: 5vh;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+}
+
+.accountDetail_balance {
+  width: 6vw;
+  height: 40%;
+  border: 2px solid;
+  margin-top: 2vh;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -2px 2px 5px 2px #c4c4c4;
+}
+
+.accountDetail_rightSide {
+  width: 50%;
+  height: 95%;
+  border-radius: 30px;
+  background-color: white;
+  box-shadow: -2px 2px 5px 2px #c4c4c4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.accountDetail_right_topSide {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+select {
+  width: 40%;
+  height: 4vh;
+  border-radius: 30px;
+  border: none;
+  box-shadow: -2px 2px 5px 2px #c4c4c4;
+  outline: none;
+}
+
+.accountDetail_right_bottomSide {
+  width: 85%;
+  height: 75%;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.acccountDetail_operation {
+  width: 100%;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: -2px 2px 5px 2px #c4c4c4;
+  border-radius: 30px;
+  margin: 1vh 0 1vh 0;
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+
+.acccountDetail_operation:hover {
+  background-color: black;
+  color: white;
+  transition: all 300ms ease;
+}
+
+.acccountDetail_operation > p {
+  margin-right: 1vw;
+  font-weight: bold;
+}
+
+.operation_icon {
+  margin-left: 1vw;
+}
+
+.accountDetail_account_info {
+  width: 20%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accountDetail_account_info > p {
+  font-size: .8rem;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+.accountDetail_account_info > h3 {
+  font-size: 1rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
