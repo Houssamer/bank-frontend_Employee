@@ -1,7 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import './style.css';
 
 function Header({ col }) {
+  const history = useHistory();
   return (
     <div className="header_container">
       <div className="header_leftSide">
@@ -14,10 +16,16 @@ function Header({ col }) {
         <h4 className={`header_button ${col === 'employees' && 'click'}`}>
           Employees
         </h4>
-        <h4 className={`header_button ${col === 'clients' && 'click'}`}>
+        <h4
+          className={`header_button ${col === 'clients' && 'click'}`}
+          onClick={() => history.push('/clients')}
+        >
           Clients
         </h4>
-        <h4 className={`header_button ${col === 'operations' && 'click'}`}>
+        <h4
+          className={`header_button ${col === 'operations' && 'click'}`}
+          onClick={() => history.push('/operations')}
+        >
           Operations
         </h4>
         <h4 className="header_button">Sign Out</h4>

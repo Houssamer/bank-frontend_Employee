@@ -107,7 +107,6 @@ select {
   border-radius: 30px;
   margin: 1vh 0 1vh 0;
   transition: all 300ms ease;
-  cursor: pointer;
 }
 
 .acccountDetail_operation:hover {

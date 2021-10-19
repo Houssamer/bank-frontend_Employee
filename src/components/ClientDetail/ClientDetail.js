@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router';
 import './style.css';
 
 function ClientDetail() {
+  const history = useHistory();
   const [accounts, setAccounts] = useState([
     {
       id: 1,
@@ -34,7 +36,7 @@ function ClientDetail() {
         <div className="clientDetail_accounts">
           {accounts.map((account) => (
             <div className="clientDetail_account">
-              <h3>account number : {account.number}</h3>
+              <h3 onClick={() => history.push('/clients/account/'+ client.id)}>account number : {account.number}</h3>
             </div>
           ))}
         </div>
