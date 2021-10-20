@@ -10,7 +10,7 @@ function AllEmployees() {
         {
             id: 1,
             email: "test@gmail.com"
-        }
+        },
     ])
   return (
     <div className="allEmployees_container">
