@@ -37,6 +37,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: opacity 300ms ease;
+    box-shadow: -2px 2px 5px 2px #C4C4C4;
 }
 
 .employeeDet_button:hover {

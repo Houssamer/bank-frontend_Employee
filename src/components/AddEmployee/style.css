@@ -1,0 +1,66 @@
+.addClient_container {
+    width: 30%;
+    height: 80vh;
+    box-shadow: -2px 2px 5px 2px #C4C4C4;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.addClient_inputs {
+    width: 80%;
+}
+
+.addClient_inputDiv {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 2vh 0 2vh 0;
+}
+
+.addClient_label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1vh;
+}
+
+.addClient_input {
+    width: 100%;
+    height: 5vh;
+    border: none;
+    background-color: #C4C4C4;
+    border-radius: 30px;
+    padding-left: 1vw;
+    outline-color: #DA22FF;
+}
+
+.addClient_buttonDiv {
+    width: 50%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addClient_button {
+    width: 80%;
+    height: 5vh;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    background-color: black;
+    color: white;
+    box-shadow: -2px 2px 5px 2px #C4C4C4;
+    cursor: pointer;
+    transition: opacity 300ms ease;
+}
+
+.addClient_button:hover {
+    opacity: .6;
+    transition: opacity 300ms ease;
+}
