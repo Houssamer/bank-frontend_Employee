@@ -8,11 +8,11 @@ import { useState } from 'react';
 import Employee from './screens/Employees/Employee';
 
 function App() {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState({type:"employee"});
   return (
     <div className="App">
-      {/* <Router>
-        {user ? (
+      <Router>
+        {user.type === "employee" ? (
           <Switch>
             <Route path="/operations">
               <Operations />
@@ -22,15 +22,24 @@ function App() {
             </Route>
             <Route component={Forbidden} />
           </Switch>
-        ) : (
+        ) : 
+        user.type === "manager" ?
+          (
+            <Switch>
+              <Route path="/employees">
+                <Employee />
+              </Route>
+              <Route component={Forbidden} />
+            </Switch>
+          )
+        : (
           <Switch>
             <Route path="/">
               <Login />
             </Route>
           </Switch>
         )}
-      </Router> */}
-      <Employee />
+      </Router>
     </div>
   );
 }
