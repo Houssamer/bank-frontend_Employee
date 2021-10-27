@@ -1,18 +1,20 @@
 import './App.css';
-import Login from './screens/Login/Login';
 import Clients from './screens/Clients/Clients';
 import Operations from './screens/Operations/Operations';
 import Forbidden from './screens/Forbidden/Forbidden';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useState } from 'react';
 import Employee from './screens/Employees/Employee';
+import SignIn from './screens/Login/SignIn';
+import { useSelector } from 'react-redux';
+import { selectUser } from './features/userSlice';
 
 function App() {
-  const [user, setUser] = useState({type:"employee"});
+  const user = useSelector(selectUser);
   return (
     <div className="App">
       <Router>
-        {user.type === "employee" ? (
+        {user?.role === "Employee" ? (
           <Switch>
             <Route path="/operations">
               <Operations />
@@ -23,7 +25,7 @@ function App() {
             <Route component={Forbidden} />
           </Switch>
         ) : 
-        user.type === "manager" ?
+        user?.role === "Manager" ?
           (
             <Switch>
               <Route path="/employees">
@@ -35,7 +37,7 @@ function App() {
         : (
           <Switch>
             <Route path="/">
-              <Login />
+              <SignIn />
             </Route>
           </Switch>
         )}

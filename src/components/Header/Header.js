@@ -1,9 +1,18 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
+import { Logout } from '../../features/userSlice';
 import './style.css';
 
 function Header({ col }) {
   const history = useHistory();
+  const dispatch = useDispatch()
+
+  function signOut() {
+    dispatch(Logout());
+    localStorage.removeItem('token');
+    history.push('/')
+  }
   return (
     <div className="header_container">
       <div className="header_leftSide">
@@ -30,7 +39,7 @@ function Header({ col }) {
         >
           Operations
         </h4>
-        <h4 className="header_button">Sign Out</h4>
+        <h4 className="header_button" onClick={signOut}>Sign Out</h4>
       </div>
     </div>
   );
