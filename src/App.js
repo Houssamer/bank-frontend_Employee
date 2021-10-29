@@ -10,7 +10,8 @@ import { useSelector } from 'react-redux';
 import { selectUser } from './features/userSlice';
 
 function App() {
-  const user = useSelector(selectUser);
+  //const user = useSelector(selectUser);
+  const [user, setUser] = useState({role: 'Employee'});
   return (
     <div className="App">
       <Router>
