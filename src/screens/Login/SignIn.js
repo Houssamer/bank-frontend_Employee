@@ -31,6 +31,7 @@ function SignIn() {
 
     axios.post('/login', body, config).then((res) => {
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('email', email);
       const body2 = JSON.stringify({
         email,
       });
@@ -38,7 +39,7 @@ function SignIn() {
       const config2 = {
         headers: {
           'Content-Type': 'application/json',
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
+          'Authorization': 'Bearer ' + localStorage.getItem('token'),
         },
       };
 

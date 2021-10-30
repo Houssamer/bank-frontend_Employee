@@ -1,35 +1,72 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import Deposit from '../../assets/deposit.png';
 import Transfer from '../../assets/transfer.png';
 import Withdraw from '../../assets/withdraw.png';
+import { useParams } from 'react-router';
+import axios from '../../axios/axios';
 
 function AccountDetail() {
-  const [account, setAccount] = useState({
-    id: 1,
-    number: '961715552555369759046004',
-    balance: 500,
-  });
-  const [operations, setOperations] = useState([
-    {
-      id: 1,
-      type: 'Deposit',
-      amount: 500,
-      date: '2021-06-28 18:00:00',
-    },
-    {
-      id: 2,
-      type: 'Transfer',
-      amount: 500,
-      date: '2021-06-28 18:00:00',
-    },
-    {
-      id: 3,
-      type: 'Withdraw',
-      amount: 500,
-      date: '2021-06-28 18:00:00',
-    },
-  ]);
+  const number = useParams().id;
+  const [account, setAccount] = useState({});
+  const [operations, setOperations] = useState([]);
+
+  useEffect(() => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('token'),
+      },
+    };
+
+    const body = JSON.stringify({
+      number,
+    });
+
+    axios.post('/api/account', body, config).then((res) => {
+      setAccount(res.data);
+      const body2 = JSON.stringify({
+        accountNumber1: number,
+      });
+      axios.post('/api/operations', body2, config).then((res) => {
+        setOperations(res.data);
+      }).catch((err) => {
+        console.log(err);
+      })
+    }).catch((err) => {
+      console.log(err);
+    })
+  }, []);
+
+  function sqlToJsDate(sqlDate) {
+    const Arr1 = sqlDate.split('-');
+    const year = Arr1[0];
+    const month = Arr1[1];
+
+    const Arr2 = Arr1[2].split('T');
+    const day = Arr2[0];
+
+    const Arr3 = Arr2[1].split(':');
+    const hour = Arr3[0];
+    const minutes = Arr3[1];
+
+    const Arr4 = Arr3[2].split('.');
+    const seconds = Arr4[0];
+
+    const date =
+      year +
+      '-' +
+      month +
+      '-' +
+      day +
+      ' ' +
+      hour +
+      ':' +
+      minutes +
+      ':' +
+      seconds;
+    return date;
+  }
 
   return (
     <div className="accountDetail_container">
@@ -74,7 +111,7 @@ function AccountDetail() {
                   <h3>{operation.type}</h3>
                   <p>{operation.amount}$</p>
                 </div>
-                <p>{operation.date}</p>
+                <p>{sqlToJsDate(operation.date)}</p>
               </div>
             ))}
           </div>

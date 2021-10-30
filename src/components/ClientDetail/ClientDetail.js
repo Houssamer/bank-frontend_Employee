@@ -63,20 +63,17 @@ function ClientDetail() {
           lastName: res.data.lastName,
           username: res.data.username,
         });
+        const body = JSON.stringify({
+          userEmail: res.data.username,
+        });
+
+        axios.post('/api/account/user', body, config).then((res) => {
+          setAccounts(res.data);
+        });
       })
       .catch((err) => {
         console.log(err);
       });
-
-    const body = JSON.stringify({
-      userEmail: client.username,
-    });
-
-    console.log(body);
-
-    axios.post('/api/account/user', body, config).then((res) => {
-      setAccounts(res.data);
-    });
   }, []);
 
   return (
@@ -107,10 +104,12 @@ function ClientDetail() {
         <h1>Accounts</h1>
         <div className="clientDetail_accounts">
           {accounts.map((account) => (
-            <div className="clientDetail_account" key={account?.id}>
-              <h3 onClick={() => history.push('/clients/account/' + client.id)}>
-                account number : {account?.number}
-              </h3>
+            <div
+              className="clientDetail_account"
+              key={account?.id}
+              onClick={() => history.push('/clients/account/' + account.number)}
+            >
+              <h3>account number : {account?.number}</h3>
             </div>
           ))}
         </div>
