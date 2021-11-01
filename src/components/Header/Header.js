@@ -19,7 +19,9 @@ function Header({ col }) {
         <h1 className="header_logo">Bank</h1>
       </div>
       <div className="header_rightSide">
-        <h4 className={`header_button ${col === 'managers' && 'click'}`}>
+        <h4 className={`header_button ${col === 'managers' && 'click'}`}
+          onClick={() => history.push('/managers')}
+        >
           Managers
         </h4>
         <h4 className={`header_button ${col === 'employees' && 'click'}`}

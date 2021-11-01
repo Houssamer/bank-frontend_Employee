@@ -10,24 +10,39 @@ import { useSelector } from 'react-redux';
 import { Login, Logout, selectUser } from './features/userSlice';
 import axios from './axios/axios';
 import { useDispatch } from 'react-redux';
+import Managers from './screens/Managers/Managers';
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   useEffect(() => {
     if (localStorage.getItem('token') != null) {
+      let role;
       const config = {
         headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token'),
+          'Authorization': 'Bearer ' + localStorage.getItem('token'),
           'Content-Type': 'application/json',
         },
       };
       const body = JSON.stringify({
         email: localStorage.getItem('email'),
       });
-
-      axios
-        .post('/api/employee', body, config)
+      axios.post('/api/role', body, config).then((res) => {
+        switch (res.data) {
+          case 'Employee':
+            role = 'employee';
+            break;
+          case 'Manager':
+            role = 'manager';
+            break;
+          case 'SysAdmin':
+            role = 'admin';
+            break;
+          default:
+            break;
+        }
+        axios
+        .post('/api/' + role, body, config)
         .then((res) => {
           dispatch(
             Login({
@@ -42,6 +57,10 @@ function App() {
           console.log(err);
           dispatch(Logout());
         });
+      }).catch((err) => {
+        console.log(err);
+        dispatch(Logout());
+      })
     }
   }, []);
   return (
@@ -61,6 +80,22 @@ function App() {
           <Switch>
             <Route path="/employees">
               <Employee />
+            </Route>
+            <Route component={Forbidden} />
+          </Switch>
+        ) : user?.role === 'SysAdmin' ? (
+          <Switch>
+            <Route path="/operations">
+              <Operations />
+            </Route>
+            <Route path="/clients">
+              <Clients />
+            </Route>
+            <Route path="/employees">
+              <Employee />
+            </Route>
+            <Route path="/managers">
+              <Managers />
             </Route>
             <Route component={Forbidden} />
           </Switch>

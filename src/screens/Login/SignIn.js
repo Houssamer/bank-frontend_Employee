@@ -17,6 +17,7 @@ function SignIn() {
     setLoading(true);
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
+    let role;
 
     const config = {
       headers: {
@@ -29,45 +30,73 @@ function SignIn() {
       password,
     });
 
-    axios.post('/login', body, config).then((res) => {
-      localStorage.setItem('token', res.data.token);
-      localStorage.setItem('email', email);
-      const body2 = JSON.stringify({
-        email,
-      });
+    axios
+      .post('/login', body, config)
+      .then((res) => {
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('email', email);
+        const body2 = JSON.stringify({
+          email: email,
+        });
 
-      const config2 = {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + localStorage.getItem('token'),
-        },
-      };
+        axios.post('/api/role', body, config).then((res) => {
+          switch (res.data) {
+            case 'Employee':
+              role = 'employee';
+              break;
+            case 'Manager':
+              role = 'manager';
+              break;
+            case 'SysAdmin':
+              role = 'admin';
+              break;
+            default:
+              break;
+          }
 
-      axios.post('/api/employee/', body2, config2).then((res) => {
-        setLoading(false);
-        dispatch(
-          Login({
-            firstName: res.data.firstName,
-            lastName: res.data.lastName,
-            email: res.data.username,
-            role: res.data.role,
-          })
-        );
-        if (res.data.role === 'Employee') {
-            history.push('/clients')
-        } else if (res.data.role === 'Manager') {
-            history.push('/employees')
-        }
-      }).catch((err) => {
+          const config2 = {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + localStorage.getItem('token'),
+            },
+          };
+
+          axios
+            .post('/api/' + role, body2, config2)
+            .then((res) => {
+              setLoading(false);
+              dispatch(
+                Login({
+                  firstName: res.data.firstName,
+                  lastName: res.data.lastName,
+                  email: res.data.username,
+                  role: res.data.role,
+                })
+              );
+              if (res.data.role === 'Employee') {
+                history.push('/clients');
+              } else if (res.data.role === 'Manager') {
+                history.push('/employees');
+              }
+            })
+            .catch((err) => {
+              setLoading(false);
+              localStorage.removeItem('token');
+              localStorage.removeItem('email');
+              dispatch(Logout());
+              console.log(err);
+            });
+        }).then.catch((err) => {
           setLoading(false);
           dispatch(Logout());
           console.log(err);
-        });
-    }).catch((err) => {
+        })
+      })
+      .catch((err) => {
         setLoading(false);
         dispatch(Logout());
         console.log(err);
-    })
+      });
   }
   return (
     <div className="login_container">
