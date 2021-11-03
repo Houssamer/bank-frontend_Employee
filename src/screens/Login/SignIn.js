@@ -77,6 +77,8 @@ function SignIn() {
                 history.push('/clients');
               } else if (res.data.role === 'Manager') {
                 history.push('/employees');
+              } else if (res.data.role === 'SysAdmin') {
+                history.push('/managers');
               }
             })
             .catch((err) => {

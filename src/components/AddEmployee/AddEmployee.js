@@ -67,7 +67,7 @@ function AddEmployee() {
     }
   }
   return (
-    <div className="addClient_container">
+    <div className="addEmployee_container">
       {loading && (
         <div className={`${loading}` ? 'loading' : 'hiddenLoading'}>
           <ReactLoading
@@ -78,65 +78,65 @@ function AddEmployee() {
           />
         </div>
       )}
-      <div className="addClient_inputs">
-        <div className="addClient_inputDiv">
-          <label htmlFor="email" className="addClient_label">
+      <div className="addEmployee_inputs">
+        <div className="addEmployee_inputDiv">
+          <label htmlFor="email" className="addEmployee_label">
             Email
           </label>
           <input
             type="email"
             placeholder="Email"
-            className="addClient_input"
+            className="addEmployee_input"
             ref={emailRef}
           />
         </div>
-        <div className="addClient_inputDiv">
-          <label htmlFor="firstName" className="addClient_label">
+        <div className="addEmployee_inputDiv">
+          <label htmlFor="firstName" className="addEmployee_label">
             First Name
           </label>
           <input
             type="text"
             placeholder="First Name"
-            className="addClient_input"
+            className="addEmployee_input"
             ref={firstNameRef}
           />
         </div>
-        <div className="addClient_inputDiv">
-          <label htmlFor="lastName" className="addClient_label">
+        <div className="addEmployee_inputDiv">
+          <label htmlFor="lastName" className="addEmployee_label">
             Last Name
           </label>
           <input
             type="text"
             placeholder="Last Name"
-            className="addClient_input"
+            className="addEmployee_input"
             ref={lastNameRef}
           />
         </div>
-        <div className="addClient_inputDiv">
-          <label htmlFor="password" className="addClient_label">
+        <div className="addEmployee_inputDiv">
+          <label htmlFor="password" className="addEmployee_label">
             Password
           </label>
           <input
             type="password"
             placeholder="Password"
-            className="addClient_input"
+            className="addEmployee_input"
             ref={passwordRef}
           />
         </div>
-        <div className="addClient_inputDiv">
-          <label htmlFor="re-password" className="addClient_label">
+        <div className="addEmployee_inputDiv">
+          <label htmlFor="re-password" className="addEmployee_label">
             Retype Password
           </label>
           <input
             type="password"
             placeholder="Re-Password"
-            className="addClient_input"
+            className="addEmployee_input"
             ref={rePasswordRef}
           />
         </div>
       </div>
-      <div className="addClient_buttonDiv">
-        <button className="addClient_button" onClick={add}>
+      <div className="addEmployee_buttonDiv">
+        <button className="addEmployee_button" onClick={add}>
           Add
         </button>
       </div>
